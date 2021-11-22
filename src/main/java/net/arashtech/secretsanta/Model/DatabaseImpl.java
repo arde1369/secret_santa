@@ -17,7 +17,7 @@ import java.util.Map;
 public class DatabaseImpl implements  Database{
 
     private Map<String, Person> mapOfPeople = new HashMap<>();
-    private final String DB_URL = "sql5.freemysqlhosting.net:3306";
+    private final String DB_URL = "jdbc:sql5.freemysqlhosting.net:3306";
     private final String DB_USER ="sql5453116";
     private final String DB_PASS="ETNS5Be7pU";
 
