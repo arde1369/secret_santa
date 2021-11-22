@@ -17,14 +17,14 @@ import java.util.Map;
 public class DatabaseImpl implements  Database{
 
     private Map<String, Person> mapOfPeople = new HashMap<>();
-    private final String DB_URL = "jdbc:sql5.freemysqlhosting.net:3306";
+    private final String DB_URL = "jdbc:mysql://sql5.freemysqlhosting.net:3306";
     private final String DB_USER ="sql5453116";
     private final String DB_PASS="ETNS5Be7pU";
 
     public void read() throws SQLException {
         try(Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from sql5453116");
+            ResultSet rs = stmt.executeQuery("select * from sql5453116.secret_santa");
         ) {
             while(rs.next()){
                 Person person = new Person();
@@ -58,8 +58,8 @@ public class DatabaseImpl implements  Database{
 
         try(Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS) ) {
             Statement stmt = conn.createStatement();
-            stmt.executeUpdate("update sys.secret_santa set giving='"+gettingGiftFor.toLowerCase()+"' where name ='"+ name.toLowerCase() +"'");
-            stmt.executeUpdate("update sys.secret_santa set receiving='"+1+"' where name ='"+ gettingGiftFor.toLowerCase() +"'");
+            stmt.executeUpdate("update sql5453116.secret_santa set giving='"+gettingGiftFor.toLowerCase()+"' where name ='"+ name.toLowerCase() +"'");
+            stmt.executeUpdate("update sql5453116.secret_santa set receiving='"+1+"' where name ='"+ gettingGiftFor.toLowerCase() +"'");
         }
 //        close();
     }
